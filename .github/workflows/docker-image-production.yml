@@ -1,0 +1,41 @@
+name: Release to Docker Hub (Production)
+
+on:
+ push:
+  tags:
+   - "*.*.*-prod"
+   - "*.*.*-*-prod"
+
+jobs:
+ build:
+  runs-on: ubuntu-latest
+  steps:
+   - name: Login to Docker Hub
+     uses: docker/login-action@v3
+     with:
+      username: ${{ secrets.DOCKERHUB_USERNAME }}
+      password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+   - uses: actions/checkout@v4
+
+   - name: Set ENV
+     run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+   - name: Build and push Docker image by latest version
+     id: docker_build_tag_latest
+     uses: docker/build-push-action@v5
+     with:
+      push: true
+      tags: innovationstream/${{ github.event.repository.name }}:latest
+      file: ./Dockerfile.production
+
+   - name: Build and push Docker image by tag version
+     id: docker_build_tag_version
+     uses: docker/build-push-action@v5
+     with:
+      push: true
+      tags: innovationstream/${{ github.event.repository.name }}:${{ env.RELEASE_VERSION }}
+      file: ./Dockerfile.production
+
+   - name: Image digest
+     run: echo ${{ steps.docker_build.outputs.digest }}
