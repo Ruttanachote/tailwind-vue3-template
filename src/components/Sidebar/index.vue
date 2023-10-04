@@ -96,7 +96,7 @@
           }
         "
       >
-        <Navmenu :items="menuItems" />
+        <Navmenu :items="this.$route.meta.menuItems" />
         <Transition @enter="enterWidget" @leave="leaveWidget">
           <div
             class="bg-slate-900 mb-10 mt-24 p-4 relative text-center rounded-2xl text-white"

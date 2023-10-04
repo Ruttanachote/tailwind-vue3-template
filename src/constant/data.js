@@ -14,6 +14,11 @@ export const menuItems = [
     link: "/app/home",
   },
   {
+    title: "App 2",
+    icon: "heroicons-outline:home",
+    link: "/app2/home",
+  },
+  {
     title: "Utility",
     icon: "heroicons-outline:view-boards",
     link: "#",
@@ -25,6 +30,19 @@ export const menuItems = [
     ],
   },
 ];
+
+export const menuItems2 = [
+  {
+    isHeadr: true,
+    title: "menu",
+  },
+  {
+    title: "App 1",
+    icon: "heroicons-outline:home",
+    link: "/app/home",
+  },
+];
+
 export const topMenu = [
   {
     isHeadr: true,
@@ -47,6 +65,7 @@ export const topMenu = [
     ],
   },
 ];
+
 export const notifications = [
   {
     title: "Your order is placed",
@@ -74,7 +93,3 @@ export const notifications = [
     link: "#",
   },
 ];
-
-
-
-
