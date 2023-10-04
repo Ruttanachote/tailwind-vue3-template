@@ -60,6 +60,36 @@ if (localStorage.users === undefined) {
 }
 
 // check localStorage theme for dark light bordered
+
+if(localStorage.theme === undefined) {
+    localStorage.theme = themeSettingsStore.theme
+    console.log('themeSettingsStore.theme',themeSettingsStore.theme)
+}
+
+if(localStorage.semiDark === undefined) {
+    localStorage.semiDark = themeSettingsStore.semidark    
+}
+
+if(localStorage.menuLayout === undefined) {
+    localStorage.menuLayout = themeSettingsStore.menuLayout
+}
+
+if(localStorage.skin === undefined) {
+    localStorage.skin = themeSettingsStore.skin
+}
+
+if(localStorage.direction === undefined) {
+    localStorage.direction = themeSettingsStore.direction
+}
+
+if(localStorage.monochrome === undefined) {
+    localStorage.monochrome = themeSettingsStore.monochrome
+}
+
+
+
+console.log('themeSettingsStore',themeSettingsStore.semidark)
+
 if (localStorage.theme === "dark") {
     document.body.classList.add("dark");
     themeSettingsStore.theme = "dark";
@@ -103,7 +133,7 @@ if (localStorage.direction === "true") {
 }
 
 // Check if the monochrome mode is set or not
-if (localStorage.getItem('monochrome') !== null) {
+if (localStorage.getItem('monochrome') === "true") {
     themeSettingsStore.monochrome = true;
     document.getElementsByTagName( 'html' )[0].classList.add('grayscale');
 }
